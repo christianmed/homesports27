@@ -47,7 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardFooter>
       </Card>
 
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl">{product.name}</DialogTitle>
           <DialogDescription>
@@ -82,7 +82,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <div className="text-xs text-muted-foreground flex items-center">
               * Precios sujetos a tasa del día.
             </div>
-            <Button className="w-full sm:w-auto bg-[#0088cc] hover:bg-[#0077b5]" asChild>
+            <Button className="w-full sm:w-auto" asChild>
               <a href={telegramUrl} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Consultar en Telegram

@@ -112,7 +112,7 @@ export function Testimonials() {
                         
                         <CardContent className="flex flex-col gap-6 p-8 h-[320px] justify-between">
                           <div className="space-y-4">
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 justify-center">
                               {Array.from({ length: t.rating }).map((_, i) => (
                                 <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-500" />
                               ))}
@@ -139,22 +139,27 @@ export function Testimonials() {
                 )
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-4 md:-left-12 bg-white hover:bg-white text-primary border-primary/20" />
-            <CarouselNext className="right-4 md:-right-12 bg-white hover:bg-white text-primary border-primary/20" />
+            
+            {/* Controls moved to bottom */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+               <CarouselPrevious className="static transform-none translate-x-0 translate-y-0" />
+               <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                   <button
+                     key={index}
+                     onClick={() => api?.scrollTo(index)}
+                     className={cn(
+                       "h-2 rounded-full transition-all duration-300",
+                       current === index ? "w-8 bg-primary" : "w-2 bg-slate-300 hover:bg-slate-400"
+                     )}
+                   />
+                ))}
+               </div>
+               <CarouselNext className="static transform-none translate-x-0 translate-y-0" />
+            </div>
           </Carousel>
           
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-               <button
-                 key={index}
-                 onClick={() => api?.scrollTo(index)}
-                 className={cn(
-                   "h-2 rounded-full transition-all duration-300",
-                   current === index ? "w-8 bg-primary" : "w-2 bg-slate-300 hover:bg-slate-400"
-                 )}
-               />
-            ))}
-          </div>
+
         </div>
       </div>
     </section>

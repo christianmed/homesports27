@@ -27,8 +27,8 @@ export function Gallery() {
         </div>
 
         <Tabs defaultValue="Todos" className="w-full mb-12" onValueChange={setActiveCategory}>
-          <div className="flex justify-center mb-8 overflow-x-auto pb-2">
-            <TabsList className="bg-background border">
+          <div className="flex justify-start md:justify-center mb-8 overflow-x-auto pb-4 scrollbar-hide">
+            <TabsList className="bg-background border flex w-max mx-auto md:w-auto md:mx-0">
               {categories.map((cat) => (
                 <TabsTrigger key={cat} value={cat} className="px-6 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                   {cat}
