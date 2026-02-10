@@ -3,7 +3,7 @@
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { MessageCircle, ArrowRight, MapPin, Truck, CreditCard } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export function Hero() {
@@ -33,7 +33,7 @@ export function Hero() {
             La tienda de confianza para el pelotero venezolano. Guantes, bates y accesorios de las mejores marcas importadas.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="h-12 px-8 text-lg w-full sm:w-auto" asChild>
               <Link href="#gallery">
                 Ver Productos <ArrowRight className="ml-2 h-5 w-5" />
@@ -45,39 +45,6 @@ export function Hero() {
                 Chatbot Telegram
               </Link>
             </Button>
-          </div>
-
-          {/* Trust Bar */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto border-t border-white/10 pt-8">
-            <div className="flex items-center justify-center gap-3 text-gray-300">
-              <div className="p-2 rounded-full bg-white/5">
-                <MapPin className="h-5 w-5 text-blue-400" />
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-white text-sm">Tienda Física</p>
-                <p className="text-xs text-gray-400">Caracas, Venezuela</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center gap-3 text-gray-300">
-              <div className="p-2 rounded-full bg-white/5">
-                <Truck className="h-5 w-5 text-blue-400" />
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-white text-sm">Envíos Nacionales</p>
-                <p className="text-xs text-gray-400">Zoom / MRW / Tealca</p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 text-gray-300">
-              <div className="p-2 rounded-full bg-white/5">
-                <CreditCard className="h-5 w-5 text-blue-400" />
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-white text-sm">Pagos Fáciles</p>
-                <p className="text-xs text-gray-400">Zelle / Pago Móvil / Cash</p>
-              </div>
-            </div>
           </div>
         </motion.div>
       </div>

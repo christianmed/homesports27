@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, MessageCircle } from 'lucide-react';
+import { CurrencySwitch } from '@/components/ui/currency-switch';
 import {
   Sheet,
   SheetContent,
@@ -41,6 +42,7 @@ export function Navbar() {
 
         {/* CTAs */}
         <div className="hidden md:flex items-center gap-4">
+          <CurrencySwitch />
           <Button variant="outline" asChild>
             <Link href="#catalog-download">
               Descargar Catálogo
@@ -75,6 +77,9 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="h-px bg-border my-2" />
+                 <div className="flex justify-start">
+                  <CurrencySwitch />
+                </div>
                 <Button variant="outline" asChild className="w-full justify-start">
                   <Link href="#catalog-download">
                     Descargar Catálogo
