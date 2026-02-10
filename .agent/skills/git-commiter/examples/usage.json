@@ -1,0 +1,21 @@
+[
+  {
+    "description": "Commit básico de una nueva funcionalidad",
+    "input": {
+      "type": "feat",
+      "scope": "api",
+      "subject": "agregar endpoint de autenticación",
+      "body": "Implementa JWT para manejo de sesiones.",
+      "is_breaking": false
+    }
+  },
+  {
+    "description": "Corrección de bug crítica",
+    "input": {
+      "type": "fix",
+      "scope": null,
+      "subject": "corregir error de nulos en usuario",
+      "is_breaking": false
+    }
+  }
+]
