@@ -32,8 +32,19 @@ export function Navbar() {
         <div className="container flex h-20 items-center justify-between px-4">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Link href="/" className="text-2xl font-black text-primary tracking-tighter uppercase">
-              CASA DEL BATE
+            <Link href="/" className="flex items-center gap-1 text-3xl font-black text-primary tracking-tighter uppercase">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinejoin="round"
+                className="w-8 h-8"
+              >
+                <path d="M2 4h20v9l-10 9-10-9V4z" />
+              </svg>
+              HS27
             </Link>
           </div>
 
@@ -59,10 +70,10 @@ export function Navbar() {
                 Descargar Catálogo
               </Link>
             </Button>
-            <Button asChild className="gap-2">
+            <Button variant="ghost" size="icon" asChild title="Chatbot Telegram">
               <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-4 w-4" />
-                Chatbot Telegram
+                <MessageCircle className="h-5 w-5" />
+                <span className="sr-only">Chatbot Telegram</span>
               </Link>
             </Button>
           </div>

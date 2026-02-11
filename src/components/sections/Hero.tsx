@@ -5,13 +5,26 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { MessageCircle, ArrowRight, MapPin, Truck, CreditCard } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-[90dvh] flex items-center justify-center overflow-hidden bg-[#001f3f]">
       {/* Background Gradient/Overlay */}
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/hero.jpeg" 
+          alt="Baseball Stadium Hero Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50 z-10" />
+      </div>
+
+      {/* Background Gradient/Overlay (Legacy - Commented out)
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-10" />
       <div className="absolute inset-0 z-0 opacity-60 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#004080] via-[#001f3f] to-black" />
+      */}
       
       {/* Content */}
       <div className="container relative z-20 text-center px-4">

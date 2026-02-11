@@ -72,6 +72,8 @@ export function CatalogDownload() {
     <section id="catalog-download" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
       <div className="container relative z-10 px-4 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
