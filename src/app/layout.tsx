@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/Providers";
+import { WishlistFAB } from "@/components/wishlist/WishlistFAB";
 import { Toaster } from "sonner";
 
 const geistSans = Geist({
@@ -37,6 +38,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
+          <WishlistFAB />
           <Footer />
           <Toaster position="top-center" richColors />
         </Providers>

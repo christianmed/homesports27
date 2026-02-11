@@ -27,10 +27,10 @@ export function Gallery() {
         </div>
 
         <Tabs defaultValue="Todos" className="w-full mb-12" onValueChange={setActiveCategory}>
-          <div className="flex justify-start md:justify-center mb-8 overflow-x-auto pb-4 scrollbar-hide">
-            <TabsList className="bg-background border flex w-max mx-auto md:w-auto md:mx-0">
+          <div className="flex justify-center mb-8">
+            <TabsList className="bg-background border flex flex-wrap justify-center h-auto gap-2 p-1">
               {categories.map((cat) => (
-                <TabsTrigger key={cat} value={cat} className="px-6 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                <TabsTrigger key={cat} value={cat} className="px-4 py-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground flex-grow md:flex-grow-0">
                   {cat}
                 </TabsTrigger>
               ))}
@@ -43,7 +43,7 @@ export function Gallery() {
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.4 }}
-               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"
             >
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />

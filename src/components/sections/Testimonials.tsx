@@ -60,6 +60,7 @@ const testimonials = [
 export function Testimonials() {
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
+/*...*/
 
   React.useEffect(() => {
     if (!api) {
@@ -81,10 +82,10 @@ export function Testimonials() {
           <p className="text-muted-foreground text-lg">Clientes que confiaron su juego en nosotros</p>
         </div>
         
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           {/* Gradients para efecto de desvanecimiento lateral */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 z-10 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 z-10 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 z-10 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" />
 
           <Carousel
             setApi={setApi}
@@ -99,7 +100,7 @@ export function Testimonials() {
                 const isActive = index === current
 
                 return (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="pl-4 basis-[85%] md:basis-1/2 lg:basis-1/3">
                     <div className={cn(
                       "transition-all duration-300 ease-out transform h-full p-2",
                       isActive ? "scale-105 opacity-100 z-10" : "scale-90 opacity-50 grayscale-[0.5]"
@@ -110,7 +111,7 @@ export function Testimonials() {
                       )}>
                         <Quote className="absolute top-6 right-6 h-12 w-12 text-blue-50/50 -rotate-12" />
                         
-                        <CardContent className="flex flex-col gap-6 p-8 h-[320px] justify-between">
+                        <CardContent className="flex flex-col gap-6 p-6 md:p-8 h-auto min-h-[280px] md:h-[320px] justify-between">
                           <div className="space-y-4">
                             <div className="flex gap-1 justify-center">
                               {Array.from({ length: t.rating }).map((_, i) => (

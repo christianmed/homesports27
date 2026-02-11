@@ -54,22 +54,6 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <CurrencySwitch />
             
-            {/* Wishlist Trigger */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative"
-              onClick={() => setIsWishlistOpen(true)}
-              title="Ver Lista de Deseos"
-            >
-              <Heart className={`h-5 w-5 ${wishlist.length > 0 ? 'fill-red-500 text-red-500' : ''}`} />
-              {wishlist.length > 0 && (
-                <Badge variant="destructive" className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-[10px] rounded-full">
-                  {wishlist.length}
-                </Badge>
-              )}
-            </Button>
-
             <Button variant="outline" asChild>
               <Link href="#catalog-download">
                 Descargar Catálogo
@@ -85,20 +69,9 @@ export function Navbar() {
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-2">
-            {/* Wishlist Trigger Mobile */}
-             <Button 
-                variant="ghost" 
-                size="icon" 
-                className="relative mr-2"
-                onClick={() => setIsWishlistOpen(true)}
-              >
-                <Heart className={`h-5 w-5 ${wishlist.length > 0 ? 'fill-red-500 text-red-500' : ''}`} />
-                {wishlist.length > 0 && (
-                  <Badge variant="destructive" className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 text-[9px] rounded-full">
-                    {wishlist.length}
-                  </Badge>
-                )}
-              </Button>
+             <div className="mr-2">
+                <CurrencySwitch />
+             </div>
 
             <Sheet>
               <SheetTrigger asChild>
@@ -113,24 +86,16 @@ export function Navbar() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="text-lg font-medium hover:text-primary transition-colors"
+                      className="text-base font-medium hover:text-primary transition-colors"
                     >
                       {link.name}
                     </Link>
                   ))}
                   <div className="h-px bg-border my-2" />
-                  <div className="flex justify-start">
-                    <CurrencySwitch />
-                  </div>
+                  
                   <Button variant="outline" asChild className="w-full justify-start">
                     <Link href="#catalog-download">
                       Descargar Catálogo
-                    </Link>
-                  </Button>
-                  <Button asChild className="w-full justify-start gap-2">
-                    <Link href="https://t.me/TuBot" target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="h-4 w-4" />
-                      Chatbot Telegram
                     </Link>
                   </Button>
                 </div>
