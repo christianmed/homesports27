@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Product } from '@/lib/data';
 import { ProductCard } from '@/components/sections/ProductCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -35,6 +36,18 @@ export function GalleryClient({ products }: GalleryClientProps) {
       addToWishlist(product);
     }
   };
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // or a skeleton loader
+  }
+
+
 
   return (
     <>
@@ -96,7 +109,13 @@ export function GalleryClient({ products }: GalleryClientProps) {
               <div className="grid gap-3 md:gap-6 md:grid-cols-2 mt-2">
                 <div className="aspect-square bg-muted rounded-lg flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden mx-auto w-full max-w-[200px] md:max-w-none">
                    {/* Product Image Placeholder */}
-                   <span className="text-6xl md:text-8xl">⚾</span>
+                   <Image 
+                     src={selectedProduct.image} 
+                     alt={selectedProduct.name} 
+                     fill 
+                     className="object-cover"
+                     sizes="(max-width: 768px) 100vw, 300px"
+                   />
                    
                     <Button
                      variant="ghost"

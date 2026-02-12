@@ -43,7 +43,7 @@ const testimonials = [
     id: 4,
     name: "Academia Future Stars",
     role: "Cliente Corporativo",
-    content: "Equipamos a toda la academia con Casa del Bate. La calidad de la utilería es de Grandes Ligas. Recomendados.",
+    content: "Equipamos a toda la academia con Home Sports 27. La calidad de la utilería es de Grandes Ligas. Recomendados.",
     rating: 5,
     initials: "AF"
   },

@@ -1,6 +1,7 @@
 'use client';
 
 import { Product } from '@/lib/data';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -39,8 +40,14 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
             <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? "fill-red-500 text-red-500" : "text-gray-700"}`} />
           </Button>
 
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 text-6xl group-hover:scale-110 transition-transform duration-500">
-            ⚾
+          <div className="w-full h-full relative group-hover:scale-110 transition-transform duration-500">
+            <Image 
+              src={product.image} 
+              alt={product.name} 
+              fill 
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
           
           <Badge className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm text-white border-0">

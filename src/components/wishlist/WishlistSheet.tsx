@@ -37,7 +37,7 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
 
   const handleSendToTelegram = () => {
     const totalUSD = calculateTotalUSD();
-    let message = `👋 ¡Hola! Estoy interesado en los siguientes productos de Casa del Bate:\n\n`;
+    let message = `👋 ¡Hola! Estoy interesado en los siguientes productos de Home Sports 27:\n\n`;
     
     wishlist.forEach((item, index) => {
       message += `${index + 1}. *${item.name}* - ${item.price}\n`;
@@ -88,11 +88,13 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
                             <div key={item.id} className="flex gap-4 p-3 rounded-lg border bg-card/50 hover:bg-muted/50 transition-colors">
                                 <div className="h-20 w-20 relative rounded-md overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
                                      {/* Placeholder fallbacks */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-muted-foreground">
-                                        <span className="text-xl">⚾</span>
-                                    </div>
-                                    {/* Un-comment when generic Image is available or handle properly */}
-                                    {/* <Image src={item.image} alt={item.name} fill className="object-cover" /> */}
+                                    <Image 
+                                        src={item.image} 
+                                        alt={item.name} 
+                                        fill 
+                                        className="object-cover" 
+                                        sizes="80px"
+                                    />
                                 </div>
                                 <div className="flex-1 flex flex-col justify-between">
                                     <div>

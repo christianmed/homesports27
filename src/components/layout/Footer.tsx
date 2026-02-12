@@ -32,7 +32,7 @@ export function Footer() {
           
           {/* Col 1: Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-black text-white tracking-tighter uppercase">CASA DEL BATE</h3>
+            <h3 className="text-2xl font-black text-white tracking-tighter uppercase">HOME SPORTS 27</h3>
             <p className="text-sm leading-relaxed text-slate-400">
               Equipando a las futuras estrellas del béisbol venezolano con las mejores marcas del mundo.
             </p>
@@ -104,7 +104,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Casa del Bate. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Home Sports 27. Todos los derechos reservados.</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-white">Privacidad</Link>
             <Link href="#" className="hover:text-white">Términos</Link>

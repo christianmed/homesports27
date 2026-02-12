@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Casa del Bate | Tienda de Béisbol en Caracas",
-  description: "Equípate como un profesional. Guantes, bates y accesorios de béisbol en Venezuela.",
+  title: "Home Sports 27 | Implementos de Béisbol, Sofball y otras actividades",
+  description: "Equípate como un profesional. Guantes, bates y accesorios de béisbol y sofball en Venezuela.",
 };
 
 export default function RootLayout({
