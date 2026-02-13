@@ -9,7 +9,8 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Check, Heart } from 'lucide-react';
+import { CatalogModal } from '@/components/sections/CatalogModal';
+import { FileDown, Check, Heart } from 'lucide-react';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCurrency } from '@/context/CurrencyContext';
 
@@ -21,6 +22,7 @@ export function GalleryClient({ products }: GalleryClientProps) {
   const categories = ['Todos', 'Guantes', 'Bates', 'Accesorios', 'Calzado'];
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [catalogOpen, setCatalogOpen] = useState(false);
   const { addToWishlist, isInWishlist, removeFromWishlist } = useWishlist();
   const { formatPrice } = useCurrency();
 
@@ -87,12 +89,21 @@ export function GalleryClient({ products }: GalleryClientProps) {
       </Tabs>
       
       <div className="text-center mt-12">
-         <Button variant="outline" size="lg" asChild>
-           <a href="https://t.me/hs27_info_bot" target="_blank" rel="noopener noreferrer">
-             Ver catálogo completo en Telegram
-           </a>
+         {/* Context-Aware Download Button */}
+         <Button 
+            className="h-14 px-8 text-lg shadow-xl bg-primary text-primary-foreground hover:bg-primary/90"
+            onClick={() => setCatalogOpen(true)}
+         >
+           <FileDown className="mr-2 h-6 w-6" />
+           {activeCategory === 'Todos' ? 'Descargar Catálogos' : `Descargar Catálogo de ${activeCategory}`}
          </Button>
       </div>
+
+      <CatalogModal 
+        open={catalogOpen} 
+        onOpenChange={setCatalogOpen} 
+        category={activeCategory}
+      />
 
       {/* Global Product Modal */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
