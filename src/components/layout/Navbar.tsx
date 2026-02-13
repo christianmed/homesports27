@@ -13,10 +13,14 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  SheetTitle,
 } from "@/components/ui/sheet";
+
+import { CatalogModal } from '@/components/sections/CatalogModal';
 
 export function Navbar() {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const { wishlist } = useWishlist();
 
   const navLinks = [
@@ -65,10 +69,8 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <CurrencySwitch />
             
-            <Button variant="outline" asChild>
-              <Link href="#catalog-download">
-                Descargar Catálogo
-              </Link>
+            <Button variant="outline" onClick={() => setIsCatalogOpen(true)}>
+              Descargar Catálogo
             </Button>
             <Button variant="ghost" size="icon" asChild title="Chatbot Telegram">
               <Link href="https://t.me/hs27_info_bot" target="_blank" rel="noopener noreferrer">
@@ -92,6 +94,7 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                 <div className="flex flex-col gap-4 mt-8 px-4">
                   {navLinks.map((link) => (
                     <Link
@@ -104,10 +107,8 @@ export function Navbar() {
                   ))}
                   <div className="h-px bg-border my-2" />
                   
-                  <Button variant="outline" asChild className="w-full justify-start">
-                    <Link href="#catalog-download">
+                  <Button variant="outline" className="w-full justify-start" onClick={() => setIsCatalogOpen(true)}>
                       Descargar Catálogo
-                    </Link>
                   </Button>
                 </div>
               </SheetContent>
@@ -117,6 +118,7 @@ export function Navbar() {
       </nav>
 
       <WishlistSheet open={isWishlistOpen} onOpenChange={setIsWishlistOpen} />
+      <CatalogModal open={isCatalogOpen} onOpenChange={setIsCatalogOpen} category="Todos" />
     </>
   );
 }
