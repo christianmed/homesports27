@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 export interface Product {
   id: string; 
   name: string;
-  price: string | number;
+  price: number;
   image: string; 
   category: string;
   description?: string;
@@ -34,8 +34,14 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('hsp_wishlist');
     if (saved) {
       try {
-        // eslint-disable-next-line
-        setWishlist(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        // Migration: Ensure price is number
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const sanitized = parsed.map((item: any) => ({
+          ...item,
+          price: typeof item.price === 'string' ? parseFloat(item.price.replace(/[^0-9.]/g, '')) : item.price
+        }));
+        setWishlist(sanitized);
       } catch (e) {
         console.error("Failed to parse wishlist", e);
       }

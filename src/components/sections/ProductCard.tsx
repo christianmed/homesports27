@@ -58,7 +58,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       <CardFooter className="p-3 md:p-4 flex flex-col items-start gap-1 flex-grow">
         <h3 className="font-bold text-base md:text-lg line-clamp-1 group-hover:text-primary transition-colors">{product.name}</h3>
         <p className="font-medium text-muted-foreground text-sm md:text-base">
-          {formatPrice(typeof product.price === 'string' ? parseFloat(product.price) : product.price)}
+          {formatPrice(product.price)}
         </p>
       </CardFooter>
     </Card>

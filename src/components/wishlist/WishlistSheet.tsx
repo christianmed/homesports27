@@ -23,16 +23,10 @@ interface WishlistSheetProps {
 
 export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
   const { wishlist, removeFromWishlist } = useWishlist();
-  const { currency, convertPrice, exchangeRate } = useCurrency();
-
-  // Helper to parse price string to number if needed (handling "$299.99" format)
-  const getPriceValue = (priceStr: string | number) => {
-    if (typeof priceStr === 'number') return priceStr;
-    return parseFloat(priceStr.replace(/[^0-9.]/g, ''));
-  };
+  const { currency, exchangeRate, formatPrice } = useCurrency();
 
   const calculateTotalUSD = () => {
-    return wishlist.reduce((acc, item) => acc + getPriceValue(item.price), 0);
+    return wishlist.reduce((acc, item) => acc + item.price, 0);
   };
 
   const handleSendToTelegram = () => {
@@ -40,7 +34,7 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
     let message = `👋 ¡Hola! Estoy interesado en los siguientes productos de Home Sports 27:\n\n`;
     
     wishlist.forEach((item, index) => {
-      message += `${index + 1}. **${item.name}** - ${item.price}\n`;
+      message += `${index + 1}. **${item.name}** - ${formatPrice(item.price)}\n`;
       message += `   (ID: ${item.id})\n`;
     });
 
@@ -100,7 +94,7 @@ export function WishlistSheet({ open, onOpenChange }: WishlistSheetProps) {
                                     <div>
                                         <h4 className="font-semibold text-sm line-clamp-2">{item.name}</h4>
                                         <p className="text-sm text-primary font-bold">
-                                            {currency === 'USD' ? item.price : convertPrice(getPriceValue(item.price))}
+                                            {formatPrice(item.price)}
                                         </p>
                                     </div>
                                     <div className="flex justify-end">

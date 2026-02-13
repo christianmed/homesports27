@@ -142,7 +142,7 @@ export function GalleryClient({ products }: GalleryClientProps) {
                   <div className="flex items-center justify-between">
                     <Badge variant="outline" className="text-xs">{selectedProduct.category}</Badge>
                     <span className="text-xl font-bold text-primary">
-                      {formatPrice(typeof selectedProduct.price === 'string' ? parseFloat(selectedProduct.price) : selectedProduct.price)}
+                      {formatPrice(selectedProduct.price)}
                     </span>
                   </div>
                   
