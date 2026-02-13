@@ -80,21 +80,26 @@ export function CatalogModal({ open, onOpenChange, category }: CatalogModalProps
   }
 
   const handleDownload = () => {
-     // In a real app, this would use logic to pick the correct PDF based on form.getValues('category')
-     // For now, we mock it.
-     const selectedCat = form.getValues('category');
-     console.log(`Downloading catalog for: ${selectedCat}`);
-     
-     // Redirect to WhatsApp with pre-filled message as a fallback/lead-magnet flow
-     // or actually download a file if we had one. 
-     // User request: "se descargue el catalogo" -> implied immediate download.
-     // But we don't have files. I'll mock a download alert or open a generic PDF.
-     
-     // Let's open a WhatsApp intent for now as it guarantees value (the business gets the contact)
-     // and the user gets "something".
-     // "Hola, acabo de descargar el catálogo de [Categoria], mi nombre es [Nombre]"
-     const msg = `Hola, quiero recibir el catálogo de *${selectedCat}*. Mi nombre es ${form.getValues('name')}.`;
-     window.open(`https://wa.me/584120000000?text=${encodeURIComponent(msg)}`, '_blank');
+    const selectedCat = form.getValues('category');
+    
+    // Map categories to filenames in public/catalogs
+    const catalogFiles: Record<string, string> = {
+      'Guantes': '/catalogs/guantes.pdf',
+      'Bates': '/catalogs/bates.pdf',
+      'Accesorios': '/catalogs/accesorios.pdf',
+      'Calzado': '/catalogs/calzado.pdf',
+      'Todos': '/catalogs/general.pdf' // Fallback for "Todos"
+    };
+
+    const fileName = catalogFiles[selectedCat] || '/catalogs/general.pdf';
+
+    // 1. Trigger Download using the anchor technique
+    const link = document.createElement('a');
+    link.href = fileName;
+    link.download = `HS27-Catalogo-${selectedCat}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
      onOpenChange(false);
      setTimeout(() => setIsSuccess(false), 500);
@@ -118,7 +123,7 @@ export function CatalogModal({ open, onOpenChange, category }: CatalogModalProps
           </DialogTitle>
           <DialogDescription className="text-center">
             {isSuccess 
-              ? "Te enviaremos el catálogo digital a tu WhatsApp enseguida." 
+              ? "Haz click en el botón de abajo para comenzar la descarga." 
               : `Completa tus datos para obtener el catálogo${isCategoryFixed ? ' de ' + category : ''}.`}
           </DialogDescription>
         </DialogHeader>
@@ -130,7 +135,7 @@ export function CatalogModal({ open, onOpenChange, category }: CatalogModalProps
               </div>
               <Button onClick={handleDownload} className="w-full bg-green-600 hover:bg-green-700">
                   <FileDown className="mr-2 h-4 w-4" />
-                  Abrir WhatsApp para Recibir
+                  Descargar Catálogo PDF
               </Button>
           </div>
         ) : (
@@ -154,7 +159,7 @@ export function CatalogModal({ open, onOpenChange, category }: CatalogModalProps
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>WhatsApp</FormLabel>
+                    <FormLabel>Teléfono</FormLabel>
                     <FormControl>
                       <Input placeholder="Ej. 04141234567" {...field} type="tel" />
                     </FormControl>
